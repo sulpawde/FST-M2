@@ -1,0 +1,11 @@
+sulbha@IBM-F568W44:~$ mkdir FST-Linux
+sulbha@IBM-F568W44:~$ cd FST-Linux
+sulbha@IBM-F568W44:~/FST-Linux$ pwd
+/home/sulbha/FST-Linux
+sulbha@IBM-F568W44:~/FST-Linux$ touch hello.txt
+sulbha@IBM-F568W44:~/FST-Linux$ ls
+hello.txt
+sulbha@IBM-F568W44:~/FST-Linux$ mv hello.txt bye.txt
+sulbha@IBM-F568W44:~/FST-Linux$ ls
+bye.txt
+sulbha@IBM-F568W44:~/FST-Linux$

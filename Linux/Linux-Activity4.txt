@@ -1,0 +1,84 @@
+sulbha@IBM-F568W44:~$ vim Activity4.sh
+sulbha@IBM-F568W44:~$ ls
+Activity4.sh  FST-Linux
+sulbha@IBM-F568W44:~$ cat Activity4.sh
+#!/bin/bash
+touch song{1,2,3,4,5,6}.mp3
+touch snap{1,2,3,4,5,6}.jpg
+touch film{1,2,3,4,5,6}.mp4
+
+mkdir -p Music
+mkdir -p Pictures
+mkdir -p Videos
+
+mv *.mp3 Music/
+mv *.jpg Pictures/
+mv *.mp4 Videos/
+
+sulbha@IBM-F568W44:~$ chmod +x Activity4.sh
+sulbha@IBM-F568W44:~$ ls
+Activity4.sh  FST-Linux
+sulbha@IBM-F568W44:~$ ./Activity4.sh
+sulbha@IBM-F568W44:~$ ls
+Activity4.sh  Music     Videos
+FST-Linux     Pictures
+sulbha@IBM-F568W44:~$ ls -rl
+total 20
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 18:37 Videos
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 18:37 Pictures
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 18:37 Music
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 17:29 FST-Linux
+-rwxr-xr-x 1 sulbha sulbha  200 Oct 16 18:36 Activity4.sh
+sulbha@IBM-F568W44:~$ ls -la
+total 52
+drwx------ 6 sulbha sulbha 4096 Oct 16 18:37 .
+drwxr-xr-x 3 root   root   4096 Oct 15 15:58 ..
+-rwxr-xr-x 1 sulbha sulbha  200 Oct 16 18:36 Activity4.sh
+-rw------- 1 sulbha sulbha  993 Oct 16 15:00 .bash_history
+-rw-r--r-- 1 sulbha sulbha  220 Oct 15 15:58 .bash_logout
+-rw-r--r-- 1 sulbha sulbha 3526 Oct 15 15:58 .bashrc
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 17:29 FST-Linux
+-rw------- 1 sulbha sulbha   20 Oct 16 18:29 .lesshst
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 18:37 Music
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 18:37 Pictures
+-rw-r--r-- 1 sulbha sulbha  807 Oct 15 15:58 .profile
+-rw-r--r-- 1 sulbha sulbha    0 Oct 16 14:39 .sudo_as_admin_successful
+drwxr-xr-x 2 sulbha sulbha 4096 Oct 16 18:37 Videos
+-rw------- 1 sulbha sulbha 3529 Oct 16 18:36 .viminfo
+sulbha@IBM-F568W44:~$ ls -r
+Videos  Pictures  Music  FST-Linux  Activity4.sh
+sulbha@IBM-F568W44:~$ find .
+.
+./.bash_logout
+./.sudo_as_admin_successful
+./.lesshst
+./FST-Linux
+./FST-Linux/hello.txt
+./FST-Linux/bye.txt
+./Activity4.sh
+./.viminfo
+./.bash_history
+./.profile
+./.bashrc
+./Videos
+./Videos/film5.mp4
+./Videos/film6.mp4
+./Videos/film2.mp4
+./Videos/film3.mp4
+./Videos/film1.mp4
+./Videos/film4.mp4
+./Music
+./Music/song3.mp3
+./Music/song1.mp3
+./Music/song2.mp3
+./Music/song5.mp3
+./Music/song6.mp3
+./Music/song4.mp3
+./Pictures
+sulbha@IBM-F568W44:~$
+./Pictures/snap2.jpg
+./Pictures/snap6.jpg
+./Pictures/snap1.jpg
+./Pictures/snap5.jpg
+./Pictures/snap3.jpg
+sulbha@IBM-F568W44:~$

@@ -1,0 +1,6 @@
+sulbha@IBM-F568W44:~/FST-Linux$ echo "Hello" > hello.txt
+sulbha@IBM-F568W44:~/FST-Linux$ echo "World" >> hello.txt
+sulbha@IBM-F568W44:~/FST-Linux$ cat hello.txt
+Hello
+World
+sulbha@IBM-F568W44:~/FST-Linux$
