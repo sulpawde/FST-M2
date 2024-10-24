@@ -1,0 +1,102 @@
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl get pods
+NAME                                  READY   STATUS    RESTARTS   AGE
+activity-deployment-9d467b87f-42l8k   1/1     Running   0          36m
+activity-deployment-9d467b87f-7p65k   1/1     Running   0          36m
+activity-deployment-9d467b87f-gsllj   1/1     Running   0          36m
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl delete -f ./Activity4
+deployment.apps "activity-deployment" deleted
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl apply -f ./Activity5
+deployment.apps/activity-deployment created
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl get pods
+NAME                                  READY   STATUS              RESTARTS   AGE
+activity-deployment-9d467b87f-k2n7s   0/1     ContainerCreating   0          7s
+activity-deployment-9d467b87f-q6q5f   0/1     ContainerCreating   0          7s
+activity-deployment-9d467b87f-qfxzl   0/1     ContainerCreating   0          7s
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl describe deployment activity-deployment
+Name:                   activity-deployment
+Namespace:              default
+CreationTimestamp:      Thu, 24 Oct 2024 16:05:39 +0530
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               component=web
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  component=web
+  Containers:
+   client:
+    Image:         docker.io/caddy
+    Port:          80/TCP
+    Host Port:     0/TCP
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   activity-deployment-9d467b87f (3/3 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  42s   deployment-controller  Scaled up replica set activity-deployment-9d467b87f to 3
+
+
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl set image deployment/activity-deployment client=docker.io/nginx:latest  
+deployment.apps/activity-deployment image updated
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl describe deployment activity-deployment
+Name:                   activity-deployment
+Namespace:              default
+CreationTimestamp:      Thu, 24 Oct 2024 16:05:39 +0530
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               component=web
+Replicas:               3 desired | 2 updated | 4 total | 3 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  component=web
+  Containers:
+   client:
+    Image:         docker.io/nginx:latest
+    Port:          80/TCP
+    Host Port:     0/TCP
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    ReplicaSetUpdated
+OldReplicaSets:  activity-deployment-9d467b87f (2/2 replicas created)
+NewReplicaSet:   activity-deployment-75659bbb85 (2/2 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  8m11s  deployment-controller  Scaled up replica set activity-deployment-9d467b87f to 3
+  Normal  ScalingReplicaSet  11s    deployment-controller  Scaled up replica set activity-deployment-75659bbb85 to 1
+  Normal  ScalingReplicaSet  3s     deployment-controller  Scaled down replica set activity-deployment-9d467b87f to 2 from 3       
+  Normal  ScalingReplicaSet  3s     deployment-controller  Scaled up replica set activity-deployment-75659bbb85 to 2 from 1        
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+activity-deployment-75659bbb85-62x7k   1/1     Running   0          10m
+activity-deployment-75659bbb85-h4dlp   1/1     Running   0          11m
+activity-deployment-75659bbb85-zf59g   1/1     Running   0          10m
+PS C:\Users\SulbhaPawde\Desktop\FSTM2\Kubernetes> kubectl delete -f ./Activity5
+deployment.apps "activity-deployment" deleted
