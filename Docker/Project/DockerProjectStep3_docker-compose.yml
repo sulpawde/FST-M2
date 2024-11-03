@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+        - POSTGRES_USERNAME=postgres
+        - POSTGRES_PASSWORD=mypassword
+        - POSTGRES_DB=simple_blog_api_db
+
+  api:
+    build: .
+    image: docker.io/sulbha24/simple-blog-api-app-image1           
+    environment:
+        - POSTGRES_HOST=postgres
+        - POSTGRES_PORT=5432
+        - POSTGRES_USERNAME=postgres
+        - POSTGRES_PASSWORD=mypassword
+        - POSTGRES_DB=simple_blog_api_db
+    ports:
+      - "30000:3000"
+    depends_on:
+      - postgres
