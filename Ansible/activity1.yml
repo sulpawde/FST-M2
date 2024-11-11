@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes # Become superuser while performing tasks
+  tasks:
+    - name: Create a user
+      user: 
+         name: testuser
+         groups: wheel
+         append: true
+         
