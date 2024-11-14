@@ -1,0 +1,150 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> podman ps
+CONTAINER ID  IMAGE                                                                 COMMAND     CREATED       STATUS         PORTS                                                                                                                                                                                                                            NAMES
+8a04791666da  registry.gitlab.com/training-support/training-environments:hadoop-v1  bash        22 hours ago  Up 44 seconds  0.0.0.0:8088->8088/tcp, 0.0.0.0:9870->9870/tcp, 8030/tcp, 8031/tcp, 8032/tcp, 8033/tcp, 8040/tcp, 8042/tcp, 8080/tcp, 8081/tcp, 8088/tcp, 9000/tcp, 13562/tcp, 40661/tcp, 50010/tcp, 50020/tcp, 50070/tcp, 50075/tcp, 50090/tcp  unruffled_dhawan
+PS C:\Windows\system32> podman exec -it unruffled_dhawan bash
+root@8a04791666da:/# cd root/
+root@8a04791666da:~# ls
+root@8a04791666da:~# vim start-hadoop.sh
+root@8a04791666da:~# ls
+start-hadoop.sh
+root@8a04791666da:~# chmod +x start-hadoop.sh
+root@8a04791666da:~# ls
+start-hadoop.sh
+root@8a04791666da:~# ./start-hadoop.sh
+root@8a04791666da:~# ls
+start-hadoop.sh
+root@8a04791666da:~# pwd
+/root
+root@8a04791666da:~# ls
+start-hadoop.sh
+root@8a04791666da:~# clear
+root@8a04791666da:~# vim txtFile.txt
+root@8a04791666da:~# ls
+start-hadoop.sh  txtFile.txt
+root@8a04791666da:~# vim csvFile.csv
+root@8a04791666da:~# ls
+csvFile.csv  start-hadoop.sh  txtFile.txt
+root@8a04791666da:~# hdfs dfs -ls
+Found 1 items
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 input
+root@8a04791666da:~# hdfs dfs -ls /
+Found 2 items
+drwxrwx---   - root supergroup          0 2024-11-14 08:51 /tmp
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:43 /user
+root@8a04791666da:~# hdfs dfs -ls /user
+Found 1 items
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root
+root@8a04791666da:~# hdfs dfs -ls R /user
+ls: `R': No such file or directory
+Found 1 items
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root
+root@8a04791666da:~# hdfs dfs -ls -R /user
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root/input
+-rw-r--r--   1 root supergroup       9213 2021-08-23 10:44 /user/root/input/capacity-scheduler.xml
+-rw-r--r--   1 root supergroup       1335 2021-08-23 10:44 /user/root/input/configuration.xsl
+-rw-r--r--   1 root supergroup       2567 2021-08-23 10:44 /user/root/input/container-executor.cfg
+-rw-r--r--   1 root supergroup        155 2021-08-23 10:44 /user/root/input/core-site.xml
+-rw-r--r--   1 root supergroup        154 2021-08-23 10:44 /user/root/input/core-site.xml.template
+-rw-r--r--   1 root supergroup       3999 2021-08-23 10:44 /user/root/input/hadoop-env.cmd
+-rw-r--r--   1 root supergroup      16794 2021-08-23 10:44 /user/root/input/hadoop-env.sh
+-rw-r--r--   1 root supergroup       3321 2021-08-23 10:44 /user/root/input/hadoop-metrics2.properties
+-rw-r--r--   1 root supergroup      11765 2021-08-23 10:44 /user/root/input/hadoop-policy.xml
+-rw-r--r--   1 root supergroup       3414 2021-08-23 10:44 /user/root/input/hadoop-user-functions.sh.example
+-rw-r--r--   1 root supergroup        683 2021-08-23 10:44 /user/root/input/hdfs-rbf-site.xml
+-rw-r--r--   1 root supergroup        354 2021-08-23 10:44 /user/root/input/hdfs-site.xml
+-rw-r--r--   1 root supergroup       1484 2021-08-23 10:44 /user/root/input/httpfs-env.sh
+-rw-r--r--   1 root supergroup       1657 2021-08-23 10:44 /user/root/input/httpfs-log4j.properties
+-rw-r--r--   1 root supergroup        620 2021-08-23 10:44 /user/root/input/httpfs-site.xml
+-rw-r--r--   1 root supergroup       3518 2021-08-23 10:44 /user/root/input/kms-acls.xml
+-rw-r--r--   1 root supergroup       1351 2021-08-23 10:44 /user/root/input/kms-env.sh
+-rw-r--r--   1 root supergroup       1860 2021-08-23 10:44 /user/root/input/kms-log4j.properties
+-rw-r--r--   1 root supergroup        682 2021-08-23 10:44 /user/root/input/kms-site.xml
+-rw-r--r--   1 root supergroup      13700 2021-08-23 10:44 /user/root/input/log4j.properties
+-rw-r--r--   1 root supergroup        951 2021-08-23 10:44 /user/root/input/mapred-env.cmd
+-rw-r--r--   1 root supergroup       1764 2021-08-23 10:44 /user/root/input/mapred-env.sh
+-rw-r--r--   1 root supergroup       4113 2021-08-23 10:44 /user/root/input/mapred-queues.xml.template
+-rw-r--r--   1 root supergroup        138 2021-08-23 10:44 /user/root/input/mapred-site.xml
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root/input/shellprofile.d
+-rw-r--r--   1 root supergroup       3880 2021-08-23 10:44 /user/root/input/shellprofile.d/example.sh
+-rw-r--r--   1 root supergroup       2316 2021-08-23 10:44 /user/root/input/ssl-client.xml.example
+-rw-r--r--   1 root supergroup       2697 2021-08-23 10:44 /user/root/input/ssl-server.xml.example
+-rw-r--r--   1 root supergroup       2681 2021-08-23 10:44 /user/root/input/user_ec_policies.xml.template
+-rw-r--r--   1 root supergroup         10 2021-08-23 10:44 /user/root/input/workers
+-rw-r--r--   1 root supergroup       2250 2021-08-23 10:44 /user/root/input/yarn-env.cmd
+-rw-r--r--   1 root supergroup       6329 2021-08-23 10:44 /user/root/input/yarn-env.sh
+-rw-r--r--   1 root supergroup       1525 2021-08-23 10:44 /user/root/input/yarn-site.xml
+-rw-r--r--   1 root supergroup       2591 2021-08-23 10:44 /user/root/input/yarnservice-log4j.properties
+root@8a04791666da:~# hdfs dfs -mkdir /user/sulbha
+root@8a04791666da:~# hdfs dfs -ls -R /user
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root/input
+-rw-r--r--   1 root supergroup       9213 2021-08-23 10:44 /user/root/input/capacity-scheduler.xml
+-rw-r--r--   1 root supergroup       1335 2021-08-23 10:44 /user/root/input/configuration.xsl
+-rw-r--r--   1 root supergroup       2567 2021-08-23 10:44 /user/root/input/container-executor.cfg
+-rw-r--r--   1 root supergroup        155 2021-08-23 10:44 /user/root/input/core-site.xml
+-rw-r--r--   1 root supergroup        154 2021-08-23 10:44 /user/root/input/core-site.xml.template
+-rw-r--r--   1 root supergroup       3999 2021-08-23 10:44 /user/root/input/hadoop-env.cmd
+-rw-r--r--   1 root supergroup      16794 2021-08-23 10:44 /user/root/input/hadoop-env.sh
+-rw-r--r--   1 root supergroup       3321 2021-08-23 10:44 /user/root/input/hadoop-metrics2.properties
+-rw-r--r--   1 root supergroup      11765 2021-08-23 10:44 /user/root/input/hadoop-policy.xml
+-rw-r--r--   1 root supergroup       3414 2021-08-23 10:44 /user/root/input/hadoop-user-functions.sh.example
+-rw-r--r--   1 root supergroup        683 2021-08-23 10:44 /user/root/input/hdfs-rbf-site.xml
+-rw-r--r--   1 root supergroup        354 2021-08-23 10:44 /user/root/input/hdfs-site.xml
+-rw-r--r--   1 root supergroup       1484 2021-08-23 10:44 /user/root/input/httpfs-env.sh
+-rw-r--r--   1 root supergroup       1657 2021-08-23 10:44 /user/root/input/httpfs-log4j.properties
+-rw-r--r--   1 root supergroup        620 2021-08-23 10:44 /user/root/input/httpfs-site.xml
+-rw-r--r--   1 root supergroup       3518 2021-08-23 10:44 /user/root/input/kms-acls.xml
+-rw-r--r--   1 root supergroup       1351 2021-08-23 10:44 /user/root/input/kms-env.sh
+-rw-r--r--   1 root supergroup       1860 2021-08-23 10:44 /user/root/input/kms-log4j.properties
+-rw-r--r--   1 root supergroup        682 2021-08-23 10:44 /user/root/input/kms-site.xml
+-rw-r--r--   1 root supergroup      13700 2021-08-23 10:44 /user/root/input/log4j.properties
+-rw-r--r--   1 root supergroup        951 2021-08-23 10:44 /user/root/input/mapred-env.cmd
+-rw-r--r--   1 root supergroup       1764 2021-08-23 10:44 /user/root/input/mapred-env.sh
+-rw-r--r--   1 root supergroup       4113 2021-08-23 10:44 /user/root/input/mapred-queues.xml.template
+-rw-r--r--   1 root supergroup        138 2021-08-23 10:44 /user/root/input/mapred-site.xml
+drwxr-xr-x   - root supergroup          0 2021-08-23 10:44 /user/root/input/shellprofile.d
+-rw-r--r--   1 root supergroup       3880 2021-08-23 10:44 /user/root/input/shellprofile.d/example.sh
+-rw-r--r--   1 root supergroup       2316 2021-08-23 10:44 /user/root/input/ssl-client.xml.example
+-rw-r--r--   1 root supergroup       2697 2021-08-23 10:44 /user/root/input/ssl-server.xml.example
+-rw-r--r--   1 root supergroup       2681 2021-08-23 10:44 /user/root/input/user_ec_policies.xml.template
+-rw-r--r--   1 root supergroup         10 2021-08-23 10:44 /user/root/input/workers
+-rw-r--r--   1 root supergroup       2250 2021-08-23 10:44 /user/root/input/yarn-env.cmd
+-rw-r--r--   1 root supergroup       6329 2021-08-23 10:44 /user/root/input/yarn-env.sh
+-rw-r--r--   1 root supergroup       1525 2021-08-23 10:44 /user/root/input/yarn-site.xml
+-rw-r--r--   1 root supergroup       2591 2021-08-23 10:44 /user/root/input/yarnservice-log4j.properties
+drwxr-xr-x   - root supergroup          0 2024-11-14 09:11 /user/sulbha
+root@8a04791666da:~# jps
+2115 NodeManager
+1652 NameNode
+2021 ResourceManager
+2245 JobHistoryServer
+1816 SecondaryNameNode
+3084 Jps
+1725 DataNode
+root@8a04791666da:~#
+
+root@8a04791666da:~# ls
+csvFile.csv  start-hadoop.sh  txtFile.txt
+root@8a04791666da:~# ls
+csvFile.csv  start-hadoop.sh  txtFile.txt
+root@8a04791666da:~# hdfs dfs -mkdir /user/sulbha
+mkdir: `/user/sulbha': File exists
+root@8a04791666da:~# hdfs dfs -put ./txtFile.txt /user/sulbha
+put: `/user/sulbha/txtFile.txt': File exists
+root@8a04791666da:~# hdfs dfs -put ./csvFile.csv /user/sulbha
+put: `/user/sulbha/csvFile.csv': File exists
+root@8a04791666da:~# hdfs dfs -ls /user/sulbha
+Found 2 items
+-rw-r--r--   1 root supergroup        529 2024-11-14 09:41 /user/sulbha/csvFile.csv
+-rw-r--r--   1 root supergroup        158 2024-11-14 09:40 /user/sulbha/txtFile.txt
+root@8a04791666da:~# hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/sulbha/txtFile.txt
+type:regular file permissions:644 root:supergroup size:158 name:txtFile.txt
+root@8a04791666da:~# hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/sulbha/csvFile.csv
+type:regular file permissions:644 root:supergroup size:529 name:csvFile.csv
+root@8a04791666da:~#
