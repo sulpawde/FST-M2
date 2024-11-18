@@ -1,4 +1,4 @@
--- Load input file from HDFS	
+-- Load input file from local	
 inputFile = LOAD '/root/input.txt' AS (line:chararray);
 -- Tokeize each word in the file (Map)
 words = FOREACH inputFile GENERATE FLATTEN(TOKENIZE(line)) AS word;
@@ -8,5 +8,5 @@ grpd = GROUP words BY word;
 totalCount = FOREACH grpd GENERATE $0 AS word, COUNT($1) AS no_of_words;
 -- To remove old outputs
 rmf /root/results';
--- Store the result in HDFS
+-- Store the result in local
 STORE totalCount INTO '/root/results';
